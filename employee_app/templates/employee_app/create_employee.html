@@ -1,0 +1,71 @@
+{% extends 'employee_app/base.html' %}
+
+{% block content %}
+<h1>Create Employee</h1>
+
+<!-- Display messages if any -->
+{% if messages %}
+    <ul style="color: rgb(240, 98, 42); background-color: bisque; padding: 2px 2px;">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<div class="employee_edit_create_container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" required>
+        </div>
+    
+        <div class="form-group">
+            <label>Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="Male" required>
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="Female" required>
+            <label for="female">Female</label><br>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="mobile">Mobile:</label>
+            <input type="number" name="mobile" minlength="10" maxlength="10" required>
+        </div>
+    
+        <div class="form-group courses">
+            <label for="course">Course(s):</label><br>
+            <input type="checkbox" name="course" value="btech"> B.E/B.Tech<br>
+            <input type="checkbox" name="course" value="mca">MCA<br>
+            <input type="checkbox" name="course" value="bca">BCA<br>
+            <input type="checkbox" name="course" value="bsc">B.sc<br>
+            <input type="checkbox" name="course" value="mba">MBA<br>
+            <input type="checkbox" name="course" value="mbbs">MBBS<br>
+        </div>
+    
+        <div class="form-group">
+            <label for="designation">Designation:</label>
+            <select name="designation" required>
+                <option value="Manager">Manager</option>
+                <option value="Developer">Developer</option>
+                <option value="Designer">Designer</option>
+                <option value="Tester">Tester</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="image">Profile Image:</label>
+            <input type="file" name="image">
+        </div>
+    
+        <button type="submit" class="btn">Create Employee</button>
+    </form>
+</div>
+
+{% endblock %}

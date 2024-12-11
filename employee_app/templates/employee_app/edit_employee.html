@@ -1,0 +1,87 @@
+{% extends 'employee_app/base.html' %}
+
+{% block content %}
+<h1>Edit Employee</h1>
+
+<!-- Display messages if any -->
+{% if messages %}
+    <ul style="color: rgb(240, 98, 42); background-color: bisque; padding: 2px 2px;">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<!-- Form to edit employee details -->
+<div class="employee_edit_create_container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Name Input -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="{{ employee.f_Name }}" required>
+        </div>
+
+        <!-- Gender Radio Buttons -->
+        <div class="form-group">
+            <label>Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="Male" {% if employee.f_Gender == "Male" %}checked{% endif %} required>
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="Female" {% if employee.f_Gender == "Female" %}checked{% endif %} required>
+            <label for="female">Female</label><br>
+        </div>
+
+        <!-- Email Input -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="{{ employee.f_Email }}" required>
+        </div>
+
+        <!-- Mobile Input -->
+        <div class="form-group">
+            <label for="mobile">Mobile:</label>
+            <input type="number" name="mobile" value="{{ employee.f_Mobile }}" minlength="10" maxlength="10" required>
+        </div>
+
+        <!-- Course Checkbox -->
+        <div class="form-group courses">
+            <label for="course">Course(s):</label><br>
+            <input type="checkbox" name="course" value="btech" {% if 'btech' in employee.f_Course %}checked{% endif %}> B.E/B.Tech<br>
+            <input type="checkbox" name="course" value="mca" {% if 'mca' in employee.f_Course %}checked{% endif %}> MCA<br>
+            <input type="checkbox" name="course" value="bca" {% if 'bca' in employee.f_Course %}checked{% endif %}> BCA<br>
+            <input type="checkbox" name="course" value="bsc" {% if 'bsc' in employee.f_Course %}checked{% endif %}> B.Sc<br>
+            <input type="checkbox" name="course" value="mba" {% if 'mba' in employee.f_Course %}checked{% endif %}> MBA<br>
+            <input type="checkbox" name="course" value="mbbs" {% if 'mbbs' in employee.f_Course %}checked{% endif %}> MBBS<br>
+        </div>
+
+        <!-- Designation Dropdown -->
+        <div class="form-group">
+            <label for="designation">Designation:</label>
+            <select name="designation" required>
+                <option value="Manager" {% if employee.f_Designation == 'Manager' %}selected{% endif %}>Manager</option>
+                <option value="Developer" {% if employee.f_Designation == 'Developer' %}selected{% endif %}>Developer</option>
+                <option value="Designer" {% if employee.f_Designation == 'Designer' %}selected{% endif %}>Designer</option>
+                <option value="Tester" {% if employee.f_Designation == 'Tester' %}selected{% endif %}>Tester</option>
+            </select>
+        </div>
+
+        <!-- Current Image Display -->
+        <div class="form-group">
+            <label for="current_image">Current Image:</label><br>
+            <!-- Display the current image properly with the same styling -->
+            <img src="{{ employee.f_Image.url }}" alt="Current Image" class="employee-image" /><br>
+        </div>
+
+        <!-- Image Upload (optional) -->
+        <div class="form-group">
+            <label for="image">Upload New Image (optional):</label>
+            <input type="file" name="image">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn">Save Changes</button>
+    </form>
+</div>
+
+{% endblock %}
