@@ -29,4 +29,4 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 80
 
 # Start both Nginx and Gunicorn
-CMD service nginx start && gunicorn --bind 127.0.0.1:8000 yourproject.wsgi:application
+CMD service nginx start && gunicorn --bind 127.0.0.1:8000 employee_management.wsgi:application
