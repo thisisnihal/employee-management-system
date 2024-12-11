@@ -39,7 +39,7 @@ print('staitc folder at = ', STATICFILES_DIRS)
 SECRET_KEY = 'django-insecure-y8)wg006$l1gzz_ilbtv7a4n#xsf#f)*@*b71_d*nr3-l*um(x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
