@@ -154,8 +154,10 @@ nav ul {
   margin: 20px auto;
   max-width: 600px;
   width: 100%;
+
   height: auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
@@ -167,14 +169,16 @@ nav ul {
 }
 
 .courses {
-  align-items: baseline;
+  align-items: flex-end;
   gap: 4px;
 }
 
 .form-group {
   display: flex;
   width: 100%;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: start;
   margin: 2px 0;
 }
 
@@ -282,10 +286,6 @@ th {
     z-index: 1;
   }
 
-  .create_employee_page {
-    padding: 15px;
-    margin: 10px;
-  }
 
   header {
     padding: 0;
@@ -320,4 +320,19 @@ th {
   .menu-btn {
     display: flex;
   }
+
+
+  .employee_edit_create_container {
+
+    padding: 20px 5px;
+    margin: 20px 10px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    
+  }
+  
 }
